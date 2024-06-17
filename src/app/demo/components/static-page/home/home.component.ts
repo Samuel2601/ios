@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
         });
     }
     DashboardComponent: boolean=false;
-    ngOnInit(): void {
+    async ngOnInit() {
         this.helperService.setHomeComponent(this);
          
         this.responsiveOptions = [
@@ -130,6 +130,7 @@ export class HomeComponent implements OnInit {
             
         }
         this.filterProductos();
+        await this.isAndroid();
     }
     buttons = [
         {
@@ -263,8 +264,10 @@ export class HomeComponent implements OnInit {
     isMobil(): boolean {
         return this.helperService.isMobil();
     }
+    androit:any=false;
     async isAndroid() {
-        return this.helperService.isAndroid();
+        this.androit =await this.helperService.isAndroid();
+        console.log(this.androit);
     }
 
     visible_incidente: boolean = false;

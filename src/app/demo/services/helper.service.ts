@@ -30,9 +30,15 @@ export class HelperService {
     isMobil() {
         return Capacitor.isNativePlatform(); //window.innerWidth <= 575;
     }
-    async isAndroid(): Promise<boolean> {
-        const info = await Device.getInfo();
-        return info.platform === 'android';
+    async isAndroid() {
+        try {
+            const info = await Device.getInfo();
+            return info.platform === 'android';
+        } catch (error) {
+            console.error('Error checking platform:', error);
+            // Handle the error appropriately (e.g., return a default value)
+            return false; // Or throw an error if this is critical
+        }
     }
 
     deshabilitarMapa$ = this.deshabilitarMapaSubject.asObservable();
