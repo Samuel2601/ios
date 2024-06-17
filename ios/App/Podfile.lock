@@ -1,0 +1,52 @@
+PODS:
+  - Capacitor (6.0.0):
+    - CapacitorCordova
+  - CapacitorApp (6.0.0):
+    - Capacitor
+  - CapacitorCamera (6.0.0):
+    - Capacitor
+  - CapacitorCordova (6.0.0)
+  - CapacitorFilesystem (6.0.0):
+    - Capacitor
+  - CapacitorGeolocation (6.0.0):
+    - Capacitor
+  - CapacitorNativeBiometric (0.0.1):
+    - Capacitor
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorGeolocation (from `../../node_modules/@capacitor/geolocation`)"
+  - CapacitorNativeBiometric (from `../../node_modules/capacitor-native-biometric`)
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorCamera:
+    :path: "../../node_modules/@capacitor/camera"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorGeolocation:
+    :path: "../../node_modules/@capacitor/geolocation"
+  CapacitorNativeBiometric:
+    :path: "../../node_modules/capacitor-native-biometric"
+
+SPEC CHECKSUMS:
+  Capacitor: 559d073c4ca6c27f8e7002c807eea94c3ba435a9
+  CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
+  CapacitorCamera: b61f125d92a0ef75d7becb7956fed7dd13187ee0
+  CapacitorCordova: 8c4bfdf69368512e85b1d8b724dd7546abeb30af
+  CapacitorFilesystem: 60e59ba274c234a979e7a3be2552feaadcee4263
+  CapacitorGeolocation: 1f12bbe372b65116e851bd8e3a94cf0ef9bacebb
+  CapacitorNativeBiometric: b47637a8cd349bdac014424bb4ddcae9ee5d4919
+
+PODFILE CHECKSUM: d3004c0d5f861e98abae050c362e26377320c526
+
+COCOAPODS: 1.15.2
