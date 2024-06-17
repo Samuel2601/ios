@@ -263,6 +263,9 @@ export class HomeComponent implements OnInit {
     isMobil(): boolean {
         return this.helperService.isMobil();
     }
+    async isAndroid() {
+        return this.helperService.isAndroid();
+    }
 
     visible_incidente: boolean = false;
     visible_incidente_mirror: boolean = false;
