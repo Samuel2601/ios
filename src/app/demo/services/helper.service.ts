@@ -27,7 +27,7 @@ import { HomeComponent } from '../components/static-page/home/home.component';
 export class HelperService {
     private deshabilitarMapaSubject = new Subject<void>();
     isMobil() {
-        return Capacitor.isNativePlatform(); //window.innerWidth <= 575; 
+        return false//Capacitor.isNativePlatform(); //window.innerWidth <= 575; 
     }
 
     deshabilitarMapa$ = this.deshabilitarMapaSubject.asObservable();
