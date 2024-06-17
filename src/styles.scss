@@ -199,8 +199,12 @@ html {
 
 body {
     margin: 0;
+    margin-top: env(--ion-safe-area-top);
     height: 100%;
     width: 100%;
+}
+.layout-topbar {
+    padding-top: env(safe-area-inset-top);
 }
 @import "assets/layout/styles/layout/layout.scss";
 
