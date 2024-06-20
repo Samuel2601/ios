@@ -1456,10 +1456,10 @@ export class LayersComponent implements OnInit {
 
     async getLocation() {
         if (this.isMobil()) {
-            /*const permission = await Geolocation['requestPermissions']();
+            const permission = await Geolocation['requestPermissions']();
             if (permission !== 'granted') {
                 const coordinates = await Geolocation['getCurrentPosition']();
-            }*/
+            }
         } else {
             this.messageService.add({
                 severity: 'info',
