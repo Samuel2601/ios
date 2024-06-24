@@ -1478,7 +1478,8 @@ export class LayersComponent implements OnInit {
     async getLocation() {
         if (this.isMobil()) {
             const permission = await Geolocation['requestPermissions']();
-            if (permission.granted) {
+            console.log(permission);
+            if (permission !== 'granted') {
                 try {
                     const coordinates = await Geolocation['getCurrentPosition']();
                     this.latitud = coordinates.coords.latitude;
