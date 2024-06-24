@@ -1478,21 +1478,11 @@ export class LayersComponent implements OnInit {
     async getLocation() {
         if (this.isMobil()) {
             const permission = await Geolocation['requestPermissions']();
-            if (permission !== 'granted') {
-                const coordinates = await Geolocation['getCurrentPosition']();
-            }
-        } else {
-            this.messageService.add({
-                severity: 'info',
-                summary: 'Info',
-                detail: 'Tu ubicación puede ser no exacta',
-            });
-        }
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    this.latitud = position.coords.latitude;
-                    this.longitud = position.coords.longitude;
+            if (permission.granted) {
+                try {
+                    const coordinates = await Geolocation['getCurrentPosition']();
+                    this.latitud = coordinates.coords.latitude;
+                    this.longitud = coordinates.coords.longitude;
                     this.addMarker(
                         { lat: this.latitud, lng: this.longitud },
                         'Ubicación',
@@ -1500,8 +1490,7 @@ export class LayersComponent implements OnInit {
                     );
                     this.updateItem();
                     this.poligonoposition();
-                },
-                (error) => {
+                } catch (error) {
                     console.error('Error getting location: ' + error.message);
                     this.messageService.add({
                         severity: 'error',
@@ -1509,16 +1498,52 @@ export class LayersComponent implements OnInit {
                         detail: error.message || 'Sin conexión',
                     });
                 }
-            );
+            } else {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Permiso Denegado',
+                    detail: 'No se pudo obtener el permiso de ubicación.',
+                });
+            }
         } else {
-            console.error('Geolocation is not supported by this browser.');
             this.messageService.add({
-                severity: 'error',
-                summary: 'ERROR',
-                detail: 'Geolocation is not supported by this browser.',
+                severity: 'info',
+                summary: 'Info',
+                detail: 'Tu ubicación puede ser no exacta',
             });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        this.latitud = position.coords.latitude;
+                        this.longitud = position.coords.longitude;
+                        this.addMarker(
+                            { lat: this.latitud, lng: this.longitud },
+                            'Ubicación',
+                            'Tu ubicación Actual'
+                        );
+                        this.updateItem();
+                        this.poligonoposition();
+                    },
+                    (error) => {
+                        console.error('Error getting location: ' + error.message);
+                        this.messageService.add({
+                            severity: 'error',
+                            summary: '404',
+                            detail: error.message || 'Sin conexión',
+                        });
+                    }
+                );
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'ERROR',
+                    detail: 'Geolocation is not supported by this browser.',
+                });
+            }
         }
     }
+    
     filterOptions(event?: any) {
         //this.opcionb = undefined;
         this.filter = this.lista_feature.filter((option: any) => {
