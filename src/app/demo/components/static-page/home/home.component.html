@@ -372,7 +372,7 @@
 >
     <div class="button-container">
         <div class="cube" *ngFor="let button of buttons; let i = index">
-            <div class="cube-face cube-front mt-5 mb-5">
+            <div class="cube-face cube-front mt-5 mb-5 pt-5 pb-5">
                 <img
                     [src]="button.icon"
                     alt="{{ button.label }}"
@@ -380,7 +380,7 @@
                 />
                 <p>{{ button.label }}</p>
             </div>
-            <div class="cube-face cube-back mt-5 mb-5">
+            <div class="cube-face cube-back mt-5 mb-5 pt-5 pb-5">
                 <p>{{ button.info }}</p>
                 <p-button
                     class="mt-3"
