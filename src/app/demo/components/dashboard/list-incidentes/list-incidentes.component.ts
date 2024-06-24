@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
     templateUrl: './list-incidentes.component.html',
     styleUrl: './list-incidentes.component.scss',
 })
-export class ListIncidentesComponent implements OnInit {
+export class ListIncidentesComponent implements OnInit, AfterViewInit {
     @Input() cate: any = '';
     @Input() sub: any = '';
     public filterForm: FormGroup | any;
@@ -43,7 +43,7 @@ export class ListIncidentesComponent implements OnInit {
             subcategoria: [[], [Validators.minLength(1)]],
             estado: [[], [Validators.minLength(1)]],
             direccion: [[], [Validators.minLength(1)]],
-            view: [null],
+            view: [true],
         });
     }
     viewmentOptions: any[] = [
@@ -51,7 +51,11 @@ export class ListIncidentesComponent implements OnInit {
         { name: 'Visibles', value: true },
         { name: 'Ocultos', value: false },
     ];
-
+    @ViewChild('fechaInicio', { static: true }) fechaInicio: ElementRef;
+    ngAfterViewInit() {
+        // Deshabilitar autofocus en el campo fecha_inicio
+        this.fechaInicio.nativeElement.querySelector('input').blur();
+    }
     filtro() {
         this.helper.llamarspinner();
         this.load_table = false;
@@ -241,6 +245,8 @@ export class ListIncidentesComponent implements OnInit {
     async ngOnInit() {
         this.check.DashboardComponent =
             this.helper.decryptData('DashboardComponent') || false;
+        this.check.ReporteIncidenteView =
+            this.helper.decryptData('ReporteIncidenteView') || false;
         //console.log(this.check.DashboardComponent);
         if (!this.check.DashboardComponent) {
             this.router.navigate(['/notfound']);
