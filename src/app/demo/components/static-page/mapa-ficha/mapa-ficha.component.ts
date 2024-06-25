@@ -1242,7 +1242,6 @@ export class MapaFichaComponent implements OnInit {
         this.fichaSectorialForm
             .get('encargado')
             ?.setValue(this.adminservice.identity(this.token));
-            this.fichaSectorialForm.get('foto').setValue(this.selectedFiles);
         if (this.fichaSectorialForm.valid) {
             this.createService
                 .registrarActividadProyecto(
@@ -1252,8 +1251,6 @@ export class MapaFichaComponent implements OnInit {
                 )
                 .subscribe(
                     (response) => {
-                        // Manejar la respuesta del servidor
-                        ////console.log(response);
                         if (response.data) {
                             this.messageService.add({
                                 severity: 'success',
@@ -1262,7 +1259,8 @@ export class MapaFichaComponent implements OnInit {
                             });
                             this.helperService.cerrarspinner();
                             setTimeout(() => {
-                                this.helperService.cerrarMapaFicha();
+                                this.helperService.cerrarMapaFicha();                                
+                                throw this.router.navigate(['maps/ficha-sectorial']);
                             }, 1000);
                         }
                      
@@ -1329,7 +1327,7 @@ export class MapaFichaComponent implements OnInit {
             promptLabelPhoto: 'Seleccionar de la galería',
             promptLabelPicture: 'Tomar foto',
         });
-        if (image && image.base64String && this.selectedFiles.length <= 5) {
+        if (image && image.base64String && this.selectedFilesnew.length <= 5) {
             const byteCharacters = atob(image.base64String);
             const byteNumbers = new Array(byteCharacters.length);
 
@@ -1340,7 +1338,7 @@ export class MapaFichaComponent implements OnInit {
             const byteArray = new Uint8Array(byteNumbers);
             const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Puedes ajustar el tipo según el formato de tu imagen
             let im = new File([blob], 'prueba', { type: 'image/jpeg' });
-            this.selectedFiles.push(im);
+            this.selectedFilesnew.push(im);
 
             const reader = new FileReader();
             reader.onload = (e: any) => {
@@ -1354,7 +1352,7 @@ export class MapaFichaComponent implements OnInit {
             reader.readAsDataURL(im);
             this.load_carrusel = true;
 
-            if (this.selectedFiles.length == 5) {
+            if (this.selectedFilesnew.length == 5) {
                 this.upload = false;
             }
         } else {
