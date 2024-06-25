@@ -1242,7 +1242,6 @@ export class MapaFichaComponent implements OnInit {
         this.fichaSectorialForm
             .get('encargado')
             ?.setValue(this.adminservice.identity(this.token));
-
         if (this.fichaSectorialForm.valid) {
             this.createService
                 .registrarActividadProyecto(
