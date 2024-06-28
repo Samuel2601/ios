@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Esmeraldas la Bella</string>
 	<key>CFBundleExecutable</key>
@@ -32,12 +30,14 @@
 	<string>Esta aplicación necesita acceder a su Face ID al momento de iniciar sesion para brindarle una mejor experiencia de usuario.</string>
 	<key>NSFileProviderPresenceUsageDescription</key>
 	<string></string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Esta aplicación necesita acceder a su ubicación en todo momento para brindarle una mejor experiencia de usuario.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Esta aplicación necesita acceder a su ubicación para brindarle una mejor experiencia de usuario.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string></string>
+	<string>Esta aplicación necesita acceder a su galería para brindarle una mejor experiencia de usuario.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
